@@ -1,9 +1,8 @@
 
 import { useState } from "react";
-import Navbar from "./components/Navbar.js";
-import ProductList from "./components/ProductList.js";
-import AddProductForm from "./components/AddProductForm.js";
-import SearchBar from "./components/SearchBar.js";
+import ProductList from "./components/ProductList.jsx";
+import AddProductForm from "./components/AddProductForm.jsx";
+import SearchBar from "./components/SearchBar.jsx";
 
 function App() {
   const [products, setProducts] = useState([
@@ -104,6 +103,7 @@ function App() {
 
         <div className="sidebar-brand">
           <div className="brand-logo">B</div>
+
           <div>
             <h2>BloomStack</h2>
             <span>INVENTORY SYSTEM</span>
@@ -130,6 +130,7 @@ function App() {
         </div>
 
         <div className="sidebar-bottom">
+
           <div className="sidebar-help">
             <span>🌷</span>
             <h4>Keep Growing!</h4>
@@ -139,6 +140,7 @@ function App() {
           <div className="sidebar-footer">
             <span>© 2026 BloomStack</span>
           </div>
+
         </div>
 
       </aside>
@@ -146,24 +148,31 @@ function App() {
       <main className="main-content">
 
         <header className="topbar">
+
           <div>
-            <p className="breadcrumb">Workspace / {activePage}</p>
+            <p className="breadcrumb">
+              Workspace / {activePage}
+            </p>
             <h1>{activePage}</h1>
           </div>
 
           <div className="topbar-right">
+
             <div className="topbar-date">
               <span>✦</span> Inventory Management
             </div>
 
             <div className="profile">
               <div className="profile-avatar">B</div>
+
               <div>
                 <strong>Admin</strong>
                 <span>Store Manager</span>
               </div>
             </div>
+
           </div>
+
         </header>
 
         <div className="page-content">
@@ -171,16 +180,21 @@ function App() {
           {activePage === "Dashboard" && (
             <>
               <section className="welcome-section">
+
                 <div>
                   <span className="welcome-label">
                     INVENTORY OVERVIEW
                   </span>
+
                   <h2>Welcome to BloomStack! 🌸</h2>
+
                   <p>
                     Here's what's happening with your inventory today.
                   </p>
                 </div>
+
                 <div className="welcome-flower">🌷</div>
+
               </section>
 
               <section className="stats-grid">
@@ -190,6 +204,7 @@ function App() {
                     <span>Total Products</span>
                     <div className="stat-icon purple">□</div>
                   </div>
+
                   <h2>{products.length}</h2>
                   <p>Products in inventory</p>
                 </div>
@@ -199,6 +214,7 @@ function App() {
                     <span>Total Categories</span>
                     <div className="stat-icon pink">◈</div>
                   </div>
+
                   <h2>{totalCategories}</h2>
                   <p>Different categories</p>
                 </div>
@@ -208,6 +224,7 @@ function App() {
                     <span>Total Stock</span>
                     <div className="stat-icon green">▤</div>
                   </div>
+
                   <h2>{totalStock}</h2>
                   <p>Units available</p>
                 </div>
@@ -217,6 +234,7 @@ function App() {
                     <span>Inventory Value</span>
                     <div className="stat-icon orange">$</div>
                   </div>
+
                   <h2>${totalValue.toFixed(2)}</h2>
                   <p>Estimated stock value</p>
                 </div>
@@ -226,52 +244,66 @@ function App() {
               <section className="overview-grid">
 
                 <div className="overview-card">
+
                   <div className="section-heading">
                     <div>
                       <h3>Stock Overview</h3>
                       <p>Current inventory summary</p>
                     </div>
+
                     <span className="heading-icon">📦</span>
                   </div>
 
                   <div className="stock-overview-content">
+
                     <div className="stock-number">
                       <h2>{totalStock}</h2>
                       <span>Total Units</span>
                     </div>
 
                     <div className="stock-details">
+
                       <div>
                         <span className="dot available"></span>
                         Available Products
                         <strong>{products.length - lowStock}</strong>
                       </div>
+
                       <div>
                         <span className="dot low"></span>
                         Low Stock Products
                         <strong>{lowStock}</strong>
                       </div>
+
                     </div>
+
                   </div>
+
                 </div>
 
                 <div className="overview-card alert-card">
+
                   <div className="section-heading">
                     <div>
                       <h3>Stock Alerts</h3>
                       <p>Products requiring attention</p>
                     </div>
+
                     <span className="heading-icon">⚠️</span>
                   </div>
 
                   <h2 className="alert-number">{lowStock}</h2>
+
                   <p className="alert-description">
                     Products with fewer than 10 units remaining.
                   </p>
 
                   <span className="alert-status">
-                    {lowStock === 0 ? "All stock levels look good" : "Restocking recommended"}
+                    {lowStock === 0
+                      ? "All stock levels look good"
+                      : "Restocking recommended"}
                   </span>
+
                 </div>
 
               </section>
@@ -283,6 +315,7 @@ function App() {
                     <h3>Recent Inventory</h3>
                     <p>Manage and monitor your products</p>
                   </div>
+
                   <span className="table-count">
                     {filteredProducts.length} Products
                   </span>
@@ -301,26 +334,31 @@ function App() {
               </section>
 
               <section className="add-section">
+
                 <div className="section-heading">
                   <div>
                     <h3>Add New Product</h3>
                     <p>Add a product to your inventory</p>
                   </div>
+
                   <span className="heading-icon">＋</span>
                 </div>
 
                 <AddProductForm onAddProduct={addProduct} />
+
               </section>
             </>
           )}
 
           {activePage === "Products" && (
             <section className="inventory-section">
+
               <div className="section-heading">
                 <div>
                   <h3>All Products</h3>
                   <p>Manage your complete product inventory</p>
                 </div>
+
                 <span className="table-count">
                   {products.length} Products
                 </span>
@@ -340,11 +378,13 @@ function App() {
                 <h3>Add New Product</h3>
                 <AddProductForm onAddProduct={addProduct} />
               </div>
+
             </section>
           )}
 
           {activePage === "Categories" && (
             <section className="inventory-section">
+
               <div className="section-heading">
                 <div>
                   <h3>Product Categories</h3>
@@ -353,25 +393,33 @@ function App() {
               </div>
 
               <div className="category-grid">
+
                 {[...new Set(products.map((p) => p.category))].map(
                   (category) => (
                     <div className="category-card" key={category}>
+
                       <div className="stat-icon purple">◈</div>
+
                       <h3>{category}</h3>
+
                       <p>
                         {products.filter(
                           (p) => p.category === category
                         ).length} Products
                       </p>
+
                     </div>
                   )
                 )}
+
               </div>
+
             </section>
           )}
 
           {activePage === "Stock Alerts" && (
             <section className="inventory-section">
+
               <div className="section-heading">
                 <div>
                   <h3>Low Stock Monitoring</h3>
@@ -391,6 +439,7 @@ function App() {
                   ✓ All products have sufficient stock!
                 </div>
               )}
+
             </section>
           )}
 
@@ -400,7 +449,9 @@ function App() {
           </footer>
 
         </div>
+
       </main>
+
     </div>
   );
 }
